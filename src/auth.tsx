@@ -6,7 +6,7 @@ function authMessage(error: unknown) {
   const text=error instanceof Error?error.message:String(error);
   if(text.includes('Invalid login credentials')) return '邮箱或密码不正确。如果还没设置简练密码，请点“首次使用 / 忘记密码”。';
   if(text.includes('Failed to fetch')) return '连接登录服务失败，请检查网络后重试。';
-  if(text.includes('Email rate limit exceeded')||text.includes('For security purposes')) return '邮件发送过于频繁，请稍后再试，也可以使用已设置的密码登录。';
+  if(text.toLowerCase().includes('email rate limit exceeded')||text.includes('For security purposes')) return '邮件发送过于频繁，请稍后再试，也可以使用已设置的密码登录。';
   return text;
 }
 
